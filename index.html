@@ -1,0 +1,344 @@
+<!doctype html>
+<html>
+<head>
+  <title>拯救流浪狗</title>
+    <style type="text/css">
+    body  {
+      background-image: url("doggy-L.png"),url("doggy-r.png");
+      background-repeat: no-repeat;
+      background-position: bottom left,bottom right;          
+      background-size: 20% 40%,20% 40%;
+      background-attachment: fixed;
+      background-color: burlywood;
+    }
+      a{
+        text-decoration: none;
+      }
+      .activeiframe {
+              border-style: solid;
+              border-width: thick;
+              height: 100%;
+              width: 100%;
+      }
+      .disableiframe {
+              height: 0px;
+              width: 0px;
+      }
+
+      #converbut  {
+        position: absolute;
+        top:105%;
+        left:15% ;
+      }
+      button:active{
+           box-shadow:0 2px #666;
+           transform: translateY(4px);
+      }
+      #nextbut  {
+        position: fixed;
+        left: 65%;
+        background-color:rgb(199, 198, 158);
+        box-shadow: 0 4px #999;
+
+      }
+      #diaimg {
+        position: relative;
+        width: 100%;
+        float: left;
+      }
+      #iframeimg  {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+      .classmenu  {
+        width: 33.3%;
+        font-size: 25px;
+        text-align: center;
+        background-color: rgb(134, 103, 103);
+        color: white;
+        padding-top: 30px;
+      }
+
+      .dropdown {
+        text-align: center;
+        background-color: rgb(116, 170, 197);
+        color: white;
+        border: solid 5px rgb(158, 217, 221);
+        padding: 40px;
+        display: none;
+      }
+      .dropdown:hover {
+        background-color: rgb(98, 183, 223);
+      }
+      #biggest  {
+        z-index: 2;
+        width: 99.8%;
+        padding-top: 20px;
+        font-size: 30px;
+        text-align: center;
+        background-color: rgb(134, 103, 103);
+        color: white;
+        border: solid 1px rgb(133, 123, 123);
+        border-radius: 3px;
+      }
+      .framediv {
+              
+              position: fixed;
+              z-index: 1;
+              top:150px;
+              left:25% ;
+              height: 50%;
+              width: 50%;
+              
+      }
+      .secondframediv {
+              
+              position: fixed;
+              top:50px;
+              left:25% ;
+              height: 60%;
+              width: 50%;
+              
+      }
+      div {
+        font-weight: 150%;
+        font-size: 25px;
+      }
+      
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+    
+    var imgclicktimes=0;
+
+$(function(){
+  localStorage.clear();
+  $("#flip").mouseover(function(){
+    $("#panel").stop(true);
+    $("#panel").slideDown(500);
+  });
+  $("#flip").mouseout(function(){
+    $("#panel").stop(true);
+    $("#panel").slideUp(500);
+  
+  });
+              
+  $("#flip1").mouseover(function(){
+    $("#pane2").stop(true);
+    $("#pane3").stop(true);
+    $("#pane2").slideDown(300);
+    $("#pane3").slideDown(300);
+  });
+  $("#flip1").mouseout(function(){
+    $("#pane3").stop(true);
+    $("#pane2").stop(true);
+    $("#pane3").slideUp(300);
+    $("#pane2").slideUp(300);
+  
+  });
+
+  $("#flip2").mouseover(function(){
+    $("#pane4").stop(true);
+    $("#pane4").slideDown(500);
+  });
+  $("#flip2").mouseout(function(){
+    $("#pane4").stop(true);
+    $("#pane4").slideUp(500);
+  
+  });
+      
+
+  $("#nextbut").click(function(){
+
+    if(imgclicktimes==3){
+      if(localStorage.getItem("game1")!=null){
+        imgclicktimes+=1;
+        $("#diaimg").attr("src","dia/"+imgclicktimes+".png");
+        $("#iframe1").attr("src","d2.html");
+      }    
+      else {
+        window.alert("你想棄狗勾不顧嗎?完成當前關卡!!");
+      }
+    }
+    else if(imgclicktimes==9){
+
+        
+      if(localStorage.getItem("game2")!=null){
+        imgclicktimes+=1;
+        $("#diaimg").attr("src","dia/"+imgclicktimes+".png");
+        $("#iframe1").attr("src","clickgame.html");
+      } 
+      else{
+        window.alert("你想棄狗勾不顧嗎?完成當前關卡!!");
+      }
+    }
+    else if(imgclicktimes==14){
+
+            
+      if(localStorage.getItem("game3")!=null){
+        imgclicktimes+=1;
+        $("#diaimg").attr("src","dia/"+imgclicktimes+".png");
+        $("#iframe1").attr("src","d4.html");
+      } 
+      else{
+        window.alert("你想棄狗勾不顧嗎?完成當前關卡!!");
+      }
+    }
+    else if(imgclicktimes==20){
+
+                  
+      if(localStorage.getItem("game4")!=null){
+        imgclicktimes+=1;
+        $("#diaimg").attr("src","dia/"+imgclicktimes+".png");
+        $("#iframe1").attr("src","d4.html");
+      } 
+      else{
+        window.alert("你想棄狗勾不顧嗎?完成當前關卡!!");
+      }
+    }
+    else {
+      if(imgclicktimes>=22){
+        var total=parseInt(localStorage.getItem("game1"))+parseInt(localStorage.getItem("game2"))+parseInt(localStorage.getItem("game3"))+parseInt(localStorage.getItem("game4"));
+        if(total>=80){
+          $("#iframeimg").attr("src","top1.jpg");
+          $("#diaimg").attr("src","dia/ending-1.png");
+        }
+        else if(total>=60){
+          $("#iframeimg").attr("src","top2.jpg");
+          $("#diaimg").attr("src","dia/ending-2.png");
+        }
+        else if(total>=40){
+          $("#iframeimg").attr("src","top3.jpg");
+          $("#diaimg").attr("src","dia/ending-3.png");
+        }
+        else if(total>=20){
+          $("#iframeimg").attr("src","top4.jpg");
+          $("#diaimg").attr("src","dia/ending-4.png");
+        }
+        else {
+          $("#iframeimg").attr("src","top5.jpg");
+          $("#diaimg").attr("src","dia/ending-5.png");
+        }
+      }
+      else {
+        imgclicktimes+=1;
+        $("#diaimg").attr("src","dia/"+imgclicktimes+".png");
+      }
+    }
+    if(imgclicktimes>=1){
+      
+      $("#biggest").hide();
+      $("#outframe").removeClass("framediv");
+      $("#outframe").addClass("secondframediv");
+    }
+    if(imgclicktimes==1){
+      $("#iframeimg").attr("src","1img.jpg")
+    }
+    if(imgclicktimes==2){
+      $("#iframeimg").attr("src","2img.JPG")
+    }
+    else if(imgclicktimes==3){
+      $("#iframeimg").hide();
+      $("#iframe1").removeClass("disableiframe");
+      $("#iframe1").addClass("activeiframe");
+    }
+    else if(imgclicktimes==4){
+      $("#iframe1").removeClass("activeiframe");
+      $("#iframe1").addClass("disableiframe");
+      $("#iframeimg").show();
+      $("#iframeimg").attr("src","2img.JPG");
+    }
+    else if(imgclicktimes==5){
+
+      $("#iframeimg").attr("src","3img.jpg");
+    }
+    else if(imgclicktimes==6){
+      $("#iframeimg").attr("src","4img.jpg");
+    }
+    else if(imgclicktimes==7){
+      $("#iframeimg").attr("src","5img.png");
+    }
+    else if(imgclicktimes==9){
+      $("#iframeimg").hide();
+      $("#iframe1").removeClass("disableiframe");
+      $("#iframe1").addClass("activeiframe");
+    }
+    else if(imgclicktimes==10){
+      $("#iframe1").removeClass("activeiframe");
+      $("#iframe1").addClass("disableiframe");
+      $("#iframeimg").show();
+    }
+    else if(imgclicktimes==11){
+      $("#iframeimg").attr("src","7img.jpg");
+    }
+    else if(imgclicktimes==12){
+      $("#iframeimg").attr("src","8img.jpg");
+    }
+    else if(imgclicktimes==14){
+      $("#iframeimg").hide();
+      $("#iframe1").removeClass("disableiframe");
+      $("#iframe1").addClass("activeiframe");
+    }
+    else if(imgclicktimes==15){
+      $("#iframe1").removeClass("activeiframe");
+      $("#iframe1").addClass("disableiframe");
+      $("#iframeimg").show();
+    }
+    else if(imgclicktimes==16){
+      $("#iframeimg").attr("src","6img.jpg");
+    }
+    else if(imgclicktimes==17){
+      $("#iframeimg").attr("src","9img.jpg");
+    }
+    else if(imgclicktimes==19){
+      $("#iframeimg").attr("src","10img.jpg");
+    }
+    else if(imgclicktimes==20){
+      $("#iframeimg").hide();
+      $("#iframe1").removeClass("disableiframe");
+      $("#iframe1").addClass("activeiframe");
+    }
+    else if(imgclicktimes==21){
+      $("#iframeimg").attr("src","11img.png");
+      $("#iframe1").removeClass("activeiframe");
+      $("#iframe1").addClass("disableiframe");
+      $("#iframeimg").show();
+    }
+    
+  });
+  
+});
+         
+    </script>
+
+</head>
+
+<body>
+  <div id="biggest" style="position: fixed;left:0%;">拯救流浪狗
+      <div id="flip" class="classmenu" style="position: fixed;left:0%;">創作此遊戲的靈感
+          <a href="yello'story.html"><div id="panel" class="dropdown" >關於這個遊戲</div></a>
+      </div>
+    <div id="flip1" class="classmenu" style="position: fixed;left:33.3%;">作者
+        <a href="delaystory.html"><div id="pane2" class="dropdown" >陳壬譽</div></a>
+      <a href="gary'story.html"><div id="pane3" class="dropdown" >謝瑋倫</div></a>
+    </div>
+    <div id="flip2" class="classmenu" style="position: fixed;left:66.6%;">關心流浪狗
+      <a href="http://www.hsapf.org.tw/"><div id="pane4" class="dropdown" >流浪狗之家</div></a>
+    </div>
+      
+  </div>
+    
+  <div id="outframe" class="framediv">
+    <img id="iframeimg" src="fristpage.png">
+    <iframe id="iframe1" class="disableiframe" src="cardgame/cardgame.html" frameborder="0"></iframe>
+    <div id="converbut">
+          <img id="diaimg" src=""></img>
+          <button id="nextbut" style="width:80px;height: 5%;">Next</button>
+    </div>
+  </div>
+  
+</body>
+</html>

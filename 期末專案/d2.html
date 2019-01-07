@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>d2</title>
+        <style type = "text/css">
+            progress{
+                height: 10px;
+                width: 400px;
+            }
+            div{
+                position: absolute;
+                left: 30%;
+                float: left;
+                z-index: 2;
+            }
+            img{
+                height: 70px;
+                width: 70px;
+            }
+            body
+                {
+                background-image: url("bg.png");
+                text-align: center;
+                font-weight: bold;
+                z-index: 1;
+                }
+        </style>
+        <script>
+            var img1;
+            var img2;
+            var img3;
+            var img4;
+            var finalpoint = 0;
+            var point = 0;
+            var game2 = 0;
+
+            function start()
+            {
+                var button1 = document.getElementById("play");
+                button1.addEventListener("click", game, false);
+                var button2 = document.getElementById("cheat");
+                button2.addEventListener("click", god, false);
+            }
+            
+            function game()
+            {
+                var timeleft = 8;
+                var downloadTimer = setInterval(function(){
+                    document.getElementById("progressBar").value = 8 - --timeleft;
+                    
+                    if(timeleft < 0)
+                    {
+                        clearInterval(downloadTimer);
+                        doSomething();
+                    }
+                    },1000);    
+                for(var i = 1; i <= 25; i++)
+                {
+                    var temp = document.getElementById("pic"+ i );
+                    temp.setAttribute("src", "ugly.jpg");
+                    temp.setAttribute("alt", "ugly");
+                }             
+                img1 = document.getElementById("pic1");
+                img2 = document.getElementById("pic2");
+                img3 = document.getElementById("pic3");
+                img4 = document.getElementById("pic4");
+                img5 = document.getElementById("pic5");
+                img6 = document.getElementById("pic6");
+                img7 = document.getElementById("pic7");
+                img8 = document.getElementById("pic8");
+                img9 = document.getElementById("pic9");
+                img10 = document.getElementById("pic10");
+                img11 = document.getElementById("pic11");
+                img12 = document.getElementById("pic12");
+                img13 = document.getElementById("pic13");
+                img14 = document.getElementById("pic14");
+                img15 = document.getElementById("pic15");
+                img16 = document.getElementById("pic16");
+                img17 = document.getElementById("pic17");
+                img18 = document.getElementById("pic18");
+                img19 = document.getElementById("pic19");
+                img20 = document.getElementById("pic20");
+                img21 = document.getElementById("pic21");
+                img22 = document.getElementById("pic22");
+                img23 = document.getElementById("pic23");
+                img24 = document.getElementById("pic24");
+                img25 = document.getElementById("pic25");
+                img1.addEventListener("click", function(){change(img1);}, false);
+                img2.addEventListener("click", function(){change(img2);}, false);
+                img3.addEventListener("click", function(){change(img3);}, false);
+                img4.addEventListener("click", function(){change(img4);}, false);     
+                img5.addEventListener("click", function(){change(img5);}, false);
+                img6.addEventListener("click", function(){change(img6);}, false);
+                img7.addEventListener("click", function(){change(img7);}, false);
+                img8.addEventListener("click", function(){change(img8);}, false);     
+                img9.addEventListener("click", function(){change(img9);}, false);
+                img10.addEventListener("click", function(){change(img10);}, false);
+                img11.addEventListener("click", function(){change(img11);}, false);
+                img12.addEventListener("click", function(){change(img12);}, false);     
+                img13.addEventListener("click", function(){change(img13);}, false);
+                img14.addEventListener("click", function(){change(img14);}, false);
+                img15.addEventListener("click", function(){change(img15);}, false);
+                img16.addEventListener("click", function(){change(img16);}, false);   
+                img17.addEventListener("click", function(){change(img17);}, false);
+                img18.addEventListener("click", function(){change(img18);}, false);
+                img19.addEventListener("click", function(){change(img19);}, false);
+                img20.addEventListener("click", function(){change(img20);}, false);        
+                img21.addEventListener("click", function(){change(img21);}, false);
+                img22.addEventListener("click", function(){change(img22);}, false);
+                img23.addEventListener("click", function(){change(img23);}, false);
+                img24.addEventListener("click", function(){change(img24);}, false);     
+                img25.addEventListener("click", function(){change(img25);}, false);  
+            }
+
+
+            function change(img)
+            {
+                var x = img.getAttribute("alt");
+                if(x != "dead")
+                {
+                    img.setAttribute("src", "dead.jpg");
+                    img.setAttribute("alt", "dead");
+                    point++;
+                }
+                else
+                {
+                    img.setAttribute("src", "dead.jpg");
+                    img.setAttribute("alt", "dead");
+                }
+                console.log(point);
+            }
+            
+            function doSomething() {
+                if(point > 25)
+                point = 25;
+                finalpoint = point;
+                localStorage.setItem("game2" ,finalpoint);
+                var mypoint = localStorage.getItem("game2" );
+                console.log("finalpoint = " + mypoint);
+                var display = document.getElementById("score");
+                display.innerHTML = "Score:" + finalpoint;
+            }
+
+            function god()
+            {
+                for(var i = 1; i <= 25; i++)
+                {
+                    var temp = document.getElementById("pic"+ i );
+                    temp.setAttribute("src", "dead.jpg");
+                    temp.setAttribute("alt", "dead");
+                }  
+                
+                finalpoint = 25;
+                localStorage.setItem("game2" ,finalpoint);
+                var mypoint = localStorage.getItem("game2" );
+                console.log("finalpoint = " + mypoint);
+                var display = document.getElementById("score");
+                display.innerHTML = "Score:" + finalpoint;
+            }
+            
+            window.addEventListener("load", start, false);
+        </script>
+    </head>
+    <body>
+        <div>
+            <p><progress value="0" max="8" id="progressBar" ></progress></p>
+            <p>
+                <img id="pic1" src="blank.png" alt="blank" class = cat1> 
+                <img id="pic2" src="blank.png" alt="blank" class = cat2> 
+                <img id="pic3" src="blank.png" alt="blank" class = cat3> 
+                <img id="pic4" src="blank.png" alt="blank" class = cat4> 
+                <img id="pic5" src="blank.png" alt="blank" class = cat5> 
+            </p>
+            <p>
+                <img id="pic6" src="blank.png" alt="blank" class = cat6> 
+                <img id="pic7" src="blank.png" alt="blank" class = cat7> 
+                <img id="pic8" src="blank.png" alt="blank" class = cat8> 
+                <img id="pic9" src="blank.png" alt="blank" class = cat9> 
+                <img id="pic10" src="blank.png" alt="blank" class = cat10> 
+            </p>
+            <p>
+                <img id="pic11" src="blank.png" alt="blank" class = cat11> 
+                <img id="pic12" src="blank.png" alt="blank" class = cat12> 
+                <img id="pic13" src="blank.png" alt="blank" class = cat13> 
+                <img id="pic14" src="blank.png" alt="blank" class = cat14> 
+                <img id="pic15" src="blank.png" alt="blank" class = cat15> 
+            </p>
+            <p>
+                <img id="pic16" src="blank.png" alt="blank" class = cat16> 
+                <img id="pic17" src="blank.png" alt="blank" class = cat17> 
+                <img id="pic18" src="blank.png" alt="blank" class = cat18> 
+                <img id="pic19" src="blank.png" alt="blank" class = cat19> 
+                <img id="pic20" src="blank.png" alt="blank" class = cat20> 
+            </p>
+            <p>
+                <img id="pic21" src="blank.png" alt="blank" class = cat21> 
+                <img id="pic22" src="blank.png" alt="blank" class = cat22> 
+                <img id="pic23" src="blank.png" alt="blank" class = cat23> 
+                <img id="pic24" src="blank.png" alt="blank" class = cat24> 
+                <img id="pic25" src="blank.png" alt="blank" class = cat25> 
+            </p>
+            <p><input id="play" type="button" value="start" style="font-weight:bold;height: 20px; width:100px"><input id="cheat" type="button" value="cheat" style="font-weight:bold;height: 20px; width:100px"></p>
+        </div>
+        <div id = "score"></div>
+    </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style type="text/css">
+        button {width: 200px;
+                height: 40px;
+                box-shadow: 0 9px #999;
+                }
+        button:active{
+           box-shadow:0 5px #666;
+           transform: translateY(4px);
+        }
+        body {
+            
+            
+            text-align:center;
+            position: relative;
+            z-index: 1;
+            top:20px;
+        }
+        #back   {
+            position: absolute;
+            height:520px;
+            width: 100%;
+            background-size: cover;
+            z-index: 0;
+            background-image: url("6img-1.jpg");
+            background-repeat: no-repeat;
+
+
+        }
+        table {
+            position: relative;
+            left: 33%;
+            z-index: 1;
+        }
+        button  {
+            position: relative;
+            z-index: 1;
+        }
+        p{  
+
+            background-color: burlywood;
+            position: relative;
+            z-index: 1;
+        }
+        span {
+            font-weight: 250%;
+            font-size: 150%;
+            color:red;
+        }
+    </style>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    var clicktimes=0;
+    var thetime=10;
+    var myvar;
+
+    
+    function timing(){
+        thetime-=1;
+        $("#timespace").text(thetime);
+        if(thetime==0){
+            $("#button1").css("visibility","hidden");
+            clearInterval(myvar);
+
+                if(clicktimes>=60)localStorage.setItem("game3",25);
+                else if(clicktimes>=50)localStorage.setItem("game3",20);
+                else if(clicktimes>=40)localStorage.setItem("game3",15);
+                else if(clicktimes>=30)localStorage.setItem("game3",10);
+                else if(clicktimes>=20)localStorage.setItem("game3",5);
+                else localStorage.setItem("game3",0);
+            
+        }
+    }
+
+    function cheating(){
+        clearInterval(myvar);
+        thetime=0;
+        clicktimes=99;
+        $("#button1").css("visibility","hidden");
+        $("#timespace").text(thetime);  
+        $("#outp").text(clicktimes);
+        localStorage.setItem("game3",25);
+    }
+
+    $(function(){
+        $("#button1").click(function(){
+                clicktimes+=1;
+                $("#outp").text(clicktimes);
+                $("#back").stop();
+
+                
+                $("#back").animate({
+                    
+                    top: "20px",
+                },50,function(){
+                    $("#back").animate({top:"0px"},50);});
+                
+
+        });
+        $("#button2").click(function(){
+                cheating();
+        });
+        $("#button1").one("click",function(){
+                myvar=setInterval(timing,1000);
+        });
+        
+    });
+    
+</script>
+</head>
+<body >
+<div id="back" ></div>
+<button id="button1" type="button" >跑!!</button>
+<button id="button2" type="button" >作弊</button> 
+<table>
+    <tr>
+        <th><p >clicked count:<span id="outp">0</span></p></th>
+        <th><p >times left:<span id="timespace">10</span></p></th>
+    </tr>
+</table>
+
+
+</body>
+</html>
